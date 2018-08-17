@@ -13,7 +13,7 @@ Synopsis
 Installation
 ------------
 
-From source: tweak the Makefile, then: type `make`.
+From source: tweak the Makefile, then:
 
     $ make
     $ make install
