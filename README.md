@@ -82,7 +82,7 @@ Caveats
 -------
 
 There is no write mode
-with the pipe iconnecteed to the standard input of the process.
+with the pipe connecteed to the standard input of the process.
 Such a mode would be severely limited
 by the inability to use standard output,
 which must be closed in order to unblock the shell.
