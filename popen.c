@@ -7,7 +7,7 @@
 #include <err.h>
 
 #define NAME	"popen"
-#define VERSION	"1.0"
+#define VERSION	"1.0-alpha"
 
 const char usage[] =
 "usage: " NAME " [-V] command [argument ...]\n";
