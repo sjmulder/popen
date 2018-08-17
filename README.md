@@ -1,12 +1,17 @@
-## popen
+popen
+=====
 
 Open a process with a named pipe.
 
-# Synopsis
+
+Synopsis
+--------
 
 **popen** [_-V_] _program_ [_arguments_ ...]
 
-# Installation
+
+Installation
+------------
 
 From source: tweak the Makefile, then: type `make`.
 
@@ -15,7 +20,9 @@ From source: tweak the Makefile, then: type `make`.
 
 The install step may need to be run as root. Uninstall with `make uninstall`.
 
-# Description
+
+Description
+-----------
 
 **popen** starts the _program_ with any given _arguments_,
 redirecting its standard output to a newly created named pipe.
@@ -36,7 +43,9 @@ Note that the process waits until the pipe is opened for reading.
 The only supported option is _-V_,
 which will make **popen** print its version number and exit.
 
-# Examples
+
+Examples
+-------
 
 One use of **popen** is as a poor man's version of the
 [bash(1)](http://linux.die.net/man/1/bash) process substitution feature,
@@ -53,18 +62,24 @@ The equivalent _ bash(1)_ command line would be:
 
     $ diff -u <(ls foo/) <(ls bar/)
 
-# See also
+
+See also
+--------
 
 [bash(1)](http://linux.die.net/man/1/bash),
 [mkfifo(1)](https://man.openbsd.org/mkfifo.1),
 [mkfifo(2)](https://man.openbsd.org/mkfifo.2),
 [popen(3)](https://man.openbsd.org/popen.3)
 
-# Author
 
- Sijmen J. Mulder (<ik@sjmulder.nl>).
+Author
+------
 
-# Caveats
+Sijmen J. Mulder (<ik@sjmulder.nl>).
+
+
+Caveats
+-------
 
 There is no write mode
 with the pipe iconnecteed to the standard input of the process.
