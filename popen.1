@@ -1,0 +1,76 @@
+.Dd August 17, 2018
+.Dt POPEN 1
+.Os
+.Sh NAME
+.Nm popen
+.Nd open a process with a named pipe
+.Sh SYNOPSIS
+.Nm
+.Op Fl V
+.Ar program
+.Op Ar arguments ...
+.Sh DESCRIPTION
+.Nm
+starts the
+.Ar program
+with any given
+.Ar arguments ,
+redirecting its standard output to a newly created named pipe.
+The path to the named pipe is printed to standard output
+before the redirection is applied:
+.Bd -literal -offset indent
+$ popen ls
+/tmp/tmp.0.BrR4L2yzE
+.Ed
+.Pp
+The pipe can then be read from by another process:
+.Bd -literal -offset indent
+$ cat /tmp/tmp.0.BrR4L2yzE
+foo.txt
+bar.txt
+.Ed
+.Pp
+Note that the process waits until the pipe is opened for reading.
+.Pp
+The only supported option is
+.Fl V ,
+which will make
+.Nm
+print its version number and exit.
+.Sh EXAMPLES
+One use of
+.Nm
+is as a poor man's version of the
+.Xr bash 1
+process substitution feature,
+allowing one to use the output of a process where a filename is expected.
+For example, this compares the file listing of two directories:
+.Bd -literal -offset indent
+$ diff -u $(popen ls foo/) $(popen ls bar/)
+[...]
+  one.txt
+ -two.txt
+ +three.txt
+.Ed
+.Pp
+The equivalent
+.Xr bash 1
+command line would be:
+.Pp
+.Dl $ diff -u <(ls foo/) <(ls bar/)
+.Sh SEE ALSO
+.Xr bash 1 ,
+.Xr mkfifo 1 ,
+.Xr mkfifo 2 ,
+.Xr popen 3
+.Sh AUTHORS
+.An Sijmen J. Mulder
+.Aq Mt ik@sjmulder.nl .
+.Sh CAVEATS
+There is no write mode
+with the pipe iconnecteed to the standard input of the process.
+Such a mode would be severely limited
+by the inability to use standard output,
+which must be closed in order to unblock the shell.
+.Sh BUGS
+This manual is longer than the program.
