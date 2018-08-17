@@ -7,7 +7,7 @@ Open a process with a named pipe.
 Synopsis
 --------
 
-**popen** [_-V_] _program_ [_arguments_ ...]
+**popen** [**-V**] _program_ [_arguments_ ...]
 
 
 Installation
@@ -40,7 +40,7 @@ The pipe can then be read from by another process:
 
 Note that the process waits until the pipe is opened for reading.
 
-The only supported option is _-V_,
+The only supported option is **-V**,
 which will make **popen** print its version number and exit.
 
 
@@ -58,7 +58,8 @@ For example, this compares the file listing of two directories:
      -two.txt
      +three.txt
 
-The equivalent _ bash(1)_ command line would be:
+The equivalent [bash(1)](http://linux.die.net/man/1/bash)
+command line would be:
 
     $ diff -u <(ls foo/) <(ls bar/)
 
