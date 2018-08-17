@@ -18,7 +18,7 @@ install: popen
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/popen
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/popen.1
-	rmdir -p $(DESTDIR)$(PREFIX)/bin
-	rmdir -p $(DESTDIR)$(MANPREFIX)/man1
+	-rmdir -p $(DESTDIR)$(PREFIX)/bin
+	-rmdir -p $(DESTDIR)$(MANPREFIX)/man1
 
 .PHONY: all clean install uninstall
