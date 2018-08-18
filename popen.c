@@ -6,11 +6,10 @@
 #include <fcntl.h>
 #include <err.h>
 
-#define NAME	"popen"
-#define VERSION	"1.0-alpha"
+/* defined by Makefile: VERSION */
 
 const char usage[] =
-"usage: " NAME " [-V] command [argument ...]\n";
+"usage: popen [-V] command [argument ...]\n";
 
 int
 main(int argc, char **argv) {
@@ -21,7 +20,7 @@ main(int argc, char **argv) {
 	while ((opt = getopt(argc, argv, "V")) != -1) {
 		switch (opt) {
 		case 'V':
-			puts(NAME " " VERSION);
+			puts("popen " VERSION);
 			return 0;
 		default:
 			return 1;

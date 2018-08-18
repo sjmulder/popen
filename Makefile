@@ -1,13 +1,18 @@
+VERSION ?= 1.0alpha
+
 DESTDIR   ?=
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)/man
 
 CFLAGS += -Wall -Wextra
+CFLAGS += -DVERSION=\"$(VERSION)\"
+
+RPMFLAGS += --define "_version $(VERSION)"
 
 all: popen
 
 clean:
-	rm -f popen
+	rm -f popen popen-$(VERSION).tar.gz
 
 install: popen
 	install -d $(DESTDIR)$(PREFIX)/bin
@@ -21,4 +26,7 @@ uninstall:
 	-rmdir -p $(DESTDIR)$(PREFIX)/bin
 	-rmdir -p $(DESTDIR)$(MANPREFIX)/man1
 
-.PHONY: all clean install uninstall
+rpm:
+	rpmbuild --build-in-place -ba $(RPMFLAGS) popen.spec
+
+.PHONY: all clean install uninstall dist rpm
